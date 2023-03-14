@@ -37,7 +37,9 @@ form.addEventListener('submit', function (event) {
             locationCell.innerHTML = location;
             timeCell.innerHTML = time_in_location.toLocaleString();
             setInterval(function() {
-                time_in_location = new Date(Date.now() - offset);
+                time_in_location = new Date(Date.now() + offset);
+                let a = Date.now()+offset;
+                console.log(new Date(a).toLocaleString());
                 timeCell.innerHTML = time_in_location.toLocaleString();
             }, 1000);
 
