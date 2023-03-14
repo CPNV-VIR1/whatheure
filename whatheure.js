@@ -21,13 +21,12 @@ form.addEventListener('submit', function (event) {
     xhr.onload = function () {
         if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
+            console.log(response);
             var location = response.data[0].label;
             var offset = response.data[0].timezone_module.offset_sec;
-            console.log(response.data[0].label);
-            console.log(response.data[0].timezone_module.offset_sec);
             const now = new Date();
-            var time_in_location = new Date(now - offset);
-            console.log(time_in_location.toLocaleString());
+            var time_in_location = new Date(now + offset);
+
 
             // Create a new row in the table for each location in the table body timezoneTableBody
             let tableBody = document.getElementById('timezoneTableBody');
@@ -35,12 +34,12 @@ form.addEventListener('submit', function (event) {
             const locationCell = newRow.insertCell();
             const timeCell = newRow.insertCell();
             locationCell.innerHTML = location;
-            timeCell.innerHTML = time_in_location.toLocaleString();
             setInterval(function() {
-                time_in_location = new Date(Date.now() + offset);
-                let a = Date.now()+offset;
-                console.log(new Date(a).toLocaleString());
-                timeCell.innerHTML = time_in_location.toLocaleString();
+                let date = new Date(); // Current date
+                let offset = 14400; // -14400 seconds
+                let newDate = new Date(date.getTime() - offset * 1000); // Calculate new date with offset
+                console.log(newDate); // May 31st 2020, 11:00 PM
+                timeCell.innerHTML = newDate.toLocaleString();
             }, 1000);
 
         } else {
