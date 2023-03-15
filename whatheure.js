@@ -23,9 +23,8 @@ form.addEventListener('submit', function (event) {
             const response = JSON.parse(xhr.responseText);
             console.log(response);
             var location = response.data[0].label;
-            var offset = response.data[0].timezone_module.offset_sec;
+            var offset = response.data[0].timezone_module.offset_sec / 3600;
             const now = new Date();
-            var time_in_location = new Date(now + offset);
 
 
             // Create a new row in the table for each location in the table body timezoneTableBody
@@ -35,10 +34,9 @@ form.addEventListener('submit', function (event) {
             const timeCell = newRow.insertCell();
             locationCell.innerHTML = location;
             setInterval(function() {
-                let date = new Date(); // Current date
-                let offset = 14400; // -14400 seconds
-                let newDate = new Date(date.getTime() - offset * 1000); // Calculate new date with offset
-                console.log(newDate); // May 31st 2020, 11:00 PM
+                let targetTime = new Date(new Date());
+                let tzDifference = offset * 60 + targetTime.getTimezoneOffset();
+                let newDate = new Date(targetTime.getTime() + tzDifference * 60 * 1000);
                 timeCell.innerHTML = newDate.toLocaleString();
             }, 1000);
 
