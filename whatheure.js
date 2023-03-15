@@ -21,7 +21,6 @@ form.addEventListener('submit', function (event) {
     xhr.onload = function () {
         if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
-            console.log(response);
             var location = response.data[0].label;
             var offset = response.data[0].timezone_module.offset_sec / 3600;
             const now = new Date();
