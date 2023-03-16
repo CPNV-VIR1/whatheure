@@ -8,6 +8,9 @@
     <title>Whatheure</title>
     <script src="assets/js/lang.js"></script>
 </head>
+<div id="loader" style="display: none" class="absolute w-full h-full bg-red-500">
+</div>
+</div>
 <header class="bg-indigo-600">
     <div class="flex justify-end">
         <button id="btnEn"
@@ -21,9 +24,11 @@
         </button>
     </div>
 </header>
+
 <main>
-    <div class="mt-5 flex justify-center">
-        <div class="flex-col w-full">
+
+    <div class="mt-5">
+        <div class="w-full">
             <form id="locationForm">
                 <div class="shadow">
                     <div class="space-y-6 bg-white px-4 py-5">
@@ -32,12 +37,12 @@
                             <p class="text-sm text-gray-500 italic" id="slogan" data-i18n="slogan"></p>
                         </div>
 
-                        <div class="w-3/4 justify-center">
+                        <div class="">
                             <label id="locationLabel" for="locationInput" class="text-sm font-medium text-gray-900"
                                    data-i18n="locationLabel"></label>
-                            <div class="mt-2 flex rounded-md shadow-sm">
+                            <div class="mt-2 rounded-md shadow-sm w-1/2 " style="left:50px">
                                 <input type="text" name="locationInput" id="locationInput"
-                                       class="flex-1 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:shadow"
+                                       class="w-5/6 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:shadow"
                                        placeholder="Nyon Suisse">
                                 <button type="submit"
                                         class="ml-2 rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
