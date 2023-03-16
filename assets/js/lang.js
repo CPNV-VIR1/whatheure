@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var locationLabel = document.getElementById('locationLabel')
     var btnSearch = document.getElementById('btnSearch')
     var timezonesLabel = document.getElementById('timezonesLabel')
+    var locationHead = document.getElementById('locationHead')
+    var timeHead = document.getElementById('timeHead')
     var currentLang = navigator.language || navigator.userLanguage
 
     translatePage(currentLang.substring(0, 2))
@@ -34,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 locationLabel.innerHTML = langData.locationLabel
                 btnSearch.innerHTML = langData.btnSearch
                 timezonesLabel.innerHTML = langData.timezonesLabel
+                locationHead.innerHTML = langData.locationHead
+                timeHead.innerHTML = langData.timeHead
             })
     }
 })
