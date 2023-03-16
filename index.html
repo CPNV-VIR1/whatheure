@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Whatheure</title>
+
+</head>
+<body>
+<form id="timezoneForm">
+    <label for="locationInput">Location:</label>
+    <input type="text" id="locationInput" name="locationInput">
+    <button type="submit">Submit</button>
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Location</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+
+        <tr>
+            <td id="localLocation"></td>
+            <td id="localDateTime"></td>
+        </tr>
+    <tbody id="timezoneTableBody">
+    </tbody>
+</table>
+
+</body>
+<script type="module" src="whatheure.js"></script>
+<script>
+    var localDateTime = document.getElementById('localDateTime');
+    localDateTime.innerHTML = new Date().toLocaleString();
+    setInterval(function() {
+        localDateTime.innerHTML = new Date().toLocaleString();
+    }, 1000);
+    var myTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    console.log(myTimeZone);
+    var localLocation = document.getElementById('localLocation');
+    localLocation.innerHTML = myTimeZone;
+</script>
+</html>
