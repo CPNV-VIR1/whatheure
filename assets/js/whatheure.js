@@ -1,7 +1,6 @@
-import dataJson from "./keys.json" assert {type: "json"};
+import dataJson from "../../keys.json" assert {type: "json"};
 
-const form = document.getElementById('timezoneForm');
-const tableBody = document.getElementById('tableBody');
+const form = document.getElementById('locationForm');
 
 // Get the access key from the JSON data
 const access_key = dataJson.access_key;
@@ -16,6 +15,8 @@ form.addEventListener('submit', function (event) {
         timezone_module: 1
     });
 
+    console.log(locationInput)
+
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://api.positionstack.com/v1/forward?' + params.toString());
     xhr.onload = function () {
@@ -25,13 +26,14 @@ form.addEventListener('submit', function (event) {
             var offset = response.data[0].timezone_module.offset_sec / 3600;
             const now = new Date();
 
-
+console.log(response);
             // Create a new row in the table for each location in the table body timezoneTableBody
-            let tableBody = document.getElementById('timezoneTableBody');
+            let tableBody = document.getElementById('timezoneTable');
             const newRow = tableBody.insertRow();
             const locationCell = newRow.insertCell();
             const timeCell = newRow.insertCell();
             locationCell.innerHTML = location;
+
             setInterval(function() {
                 let targetTime = new Date(new Date());
                 let tzDifference = offset * 60 + targetTime.getTimezoneOffset();

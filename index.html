@@ -4,24 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
     <title>Whatheure</title>
     <script src="assets/js/lang.js"></script>
 </head>
 <header class="bg-indigo-600">
     <div class="flex justify-end">
         <button id="btnEn"
-            class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">EN</button>
+                class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">EN
+        </button>
         <button id="btnFr"
-            class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">FR</button>
+                class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">FR
+        </button>
         <button id="btnDe"
-            class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">DE</button>
+                class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">DE
+        </button>
     </div>
 </header>
 <main>
     <div class="mt-5 flex justify-center">
         <div class="flex-col w-full">
-            <form action="#" method="POST" id="locationForm">
+            <form id="locationForm">
                 <div class="shadow">
                     <div class="space-y-6 bg-white px-4 py-5">
                         <div class="text-center">
@@ -31,40 +34,40 @@
 
                         <div class="w-3/4 justify-center">
                             <label id="locationLabel" for="locationInput" class="text-sm font-medium text-gray-900"
-                                data-i18n="locationLabel"></label>
+                                   data-i18n="locationLabel"></label>
                             <div class="mt-2 flex rounded-md shadow-sm">
                                 <input type="text" name="locationInput" id="locationInput"
-                                    class="flex-1 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:shadow"
-                                    placeholder="Nyon Suisse">
+                                       class="flex-1 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:shadow"
+                                       placeholder="Nyon Suisse">
                                 <button type="submit"
-                                    class="ml-2 rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
-                                    id="btnSearch" data-i18n="btnSearch"></button>
+                                        class="ml-2 rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
+                                        id="btnSearch" data-i18n="btnSearch"></button>
                             </div>
                         </div>
 
-                        <div>
-                            <label id="timezonesLabel" for="timezones"
-                                class="text-sm font-medium leading-6 text-gray-900" data-i18n="timezonesLabel"></label>
-                            <div class="mt-2 flex text-center">
-                                <div class="flex-row w-1/2">
-                                    <table class="w-full">
-                                        <tr class="w-full">
-                                            <td class="text-xl" id="locationText"></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="flex-row w-1/2">
-                                    <table class="w-full">
-                                        <tr class="w-full">
-                                            <td class="text-xl" id="timeText"></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </form>
+            <div>
+            <label id="timezonesLabel" for="timezones"
+                   class="text-sm font-medium leading-6 text-gray-900" data-i18n="timezonesLabel"></label>
+            <div class="mt-2 text-center">
+                <table class="w-full text-xl">
+                    <thead>
+                        <th data-i18n="location">Location</th>
+                        <th data-i18n="time">Time</th>
+                    </thead>
+                    <tr class="w-full">
+                        <td id="locationText"></td>
+                        <td id="timeText"></td>
+                    </tr>
+                    <tbody id="timezoneTable">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
         </div>
     </div>
 </main>
