@@ -106,5 +106,5 @@ dist
 #JetBrains
 .idea
 
-
+storage/backend.json
 keys.json
