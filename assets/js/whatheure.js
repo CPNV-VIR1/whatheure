@@ -15,8 +15,6 @@ form.addEventListener('submit', function (event) {
         timezone_module: 1
     });
 
-    console.log(locationInput)
-
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://api.positionstack.com/v1/forward?' + params.toString());
     xhr.onload = function () {
@@ -26,7 +24,6 @@ form.addEventListener('submit', function (event) {
             var offset = response.data[0].timezone_module.offset_sec / 3600;
             const now = new Date();
 
-console.log(response);
             // Create a new row in the table for each location in the table body timezoneTableBody
             let tableBody = document.getElementById('timezoneTable');
             const newRow = tableBody.insertRow();
@@ -34,7 +31,7 @@ console.log(response);
             const timeCell = newRow.insertCell();
             locationCell.innerHTML = location;
 
-            setInterval(function() {
+            setInterval(function () {
                 let targetTime = new Date(new Date());
                 let tzDifference = offset * 60 + targetTime.getTimezoneOffset();
                 let newDate = new Date(targetTime.getTime() + tzDifference * 60 * 1000);
