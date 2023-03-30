@@ -15,8 +15,16 @@ const requestListener = function (request, response) {
                 response.end(data);
             }
         });
-    } else if (request.url === '/about') {
-        response.end('About Us');
+    } else if (request.url.startsWith('/assets/js/')) {
+        const fileName = request.url.replace('/assets/js/', '');
+        const file = fs.readFileSync(`./assets/js/${fileName}`);
+        response.writeHead(200, { 'Content-Type': 'text/javascript' });
+        response.end(file, 'utf-8');
+    } else if (request.url.startsWith('/assets/json/')) {
+        const fileName = request.url.replace('/assets/json/', '');
+        const file = fs.readFileSync(`./assets/json/${fileName}`);
+        response.writeHead(200, { 'Content-Type': 'application/json' });
+        response.end(file, 'utf-8');
     } else {
         response.statusCode = 404;
         response.end('Page Not Found');
