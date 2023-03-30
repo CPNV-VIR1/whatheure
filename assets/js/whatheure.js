@@ -1,9 +1,8 @@
-import dataJson from "../../keys.json" assert {type: "json"};
 import backend from "../../storage/backend.json" assert {type: "json"};
 const form = document.getElementById('locationForm');
 
 // Get the access key from the JSON data
-const access_key = dataJson.access_key;
+const access_key = process.env.WHATHEURE_POSSTACK_ACCESS_KEY
 
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // prevent form submission
