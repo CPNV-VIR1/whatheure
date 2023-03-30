@@ -2,7 +2,7 @@
   "id": "492fe100-1bc0-435d-99c5-ec13acf92f53",
   "version": "2.0",
   "name": "whatheur",
-  "url": "http://localhost:8888",
+  "url": "http://localhost:8000",
   "tests": [{
     "id": "7641c3a6-fc64-48ec-8daf-4bb84214e306",
     "name": "Display searched time",
@@ -224,6 +224,6 @@
     "timeout": 300,
     "tests": ["7641c3a6-fc64-48ec-8daf-4bb84214e306"]
   }],
-  "urls": ["http://localhost:8888/"],
+  "urls": ["http://localhost:8888/", "http://localhost:8000/"],
   "plugins": []
 }
