@@ -16,6 +16,7 @@ test('GET / returns a 200', (done) => {
 
     const request = http.request(options, (response) => {
         expect(response.statusCode).toBe(200);
+        server.close();
         done();
     });
 
