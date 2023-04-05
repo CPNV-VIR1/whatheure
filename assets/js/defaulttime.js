@@ -1,6 +1,6 @@
 var localDateTime = document.getElementById('timeText');
 localDateTime.innerHTML = new Date().toLocaleString();
-setInterval(function() {
+setInterval(function () {
     localDateTime.innerHTML = new Date().toLocaleString();
 }, 1000);
 var myTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;

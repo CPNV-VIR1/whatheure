@@ -3,7 +3,7 @@ const form = document.getElementById('locationForm');
 
 // Get the access key from the JSON data
 console.log('SET YOUR API KEY FOR POSITIONSTAK HERE')
-//const access_key = "API_KEY";
+//const accessKey = "API_KEY";
 
 
 form.addEventListener('submit', function (event) {
@@ -11,41 +11,41 @@ form.addEventListener('submit', function (event) {
     const locationInput = document.querySelector('#locationInput').value;
 
     // Check if the location exists in backend.json
-   //if (backend.hasOwnProperty(locationInput)) {
-   //    // Get the location and offset from backend.json
-   //    const location = backend[locationInput].location;
-   //    const offset = backend[locationInput].offset;
+    //if (backend.hasOwnProperty(locationInput)) {
+    //    // Get the location and offset from backend.json
+    //    const location = backend[locationInput].location;
+    //    const offset = backend[locationInput].offset;
 
-   //    fillTable(location, offset);
+    //    fillTable(location, offset);
 
-   //} else {
-        const params = new URLSearchParams({
-            access_key: access_key,
-            query: locationInput,
-            timezone_module: 1
-        });
+    //} else {
+    const params = new URLSearchParams({
+        access_key: accessKey,
+        query: locationInput,
+        timezone_module: 1
+    });
 
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://api.positionstack.com/v1/forward?' + params.toString());
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-                var location = response.data[0].label;
-                var offset = response.data[0].timezone_module.offset_sec / 3600;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.positionstack.com/v1/forward?' + params.toString());
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            var location = response.data[0].label;
+            var offset = response.data[0].timezone_module.offset_sec / 3600;
 
-                // Store the location in backend.json
-                //backend[locationInput] = { location, offset };
-                //const jsonString = JSON.stringify(backend, null, 2);
+            // Store the location in backend.json
+            //backend[locationInput] = { location, offset };
+            //const jsonString = JSON.stringify(backend, null, 2);
 
-                //fs.writeFileSync(backend, jsonString);
+            //fs.writeFileSync(backend, jsonString);
 
-                fillTable(location, offset);
+            fillTable(location, offset);
 
-            } else {
-                console.log('Request failed. Returned status of ' + xhr.status);
-            }
-        };
-        xhr.send();
+        } else {
+            console.log('Request failed. Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
 // }
 });
 
