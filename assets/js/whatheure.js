@@ -1,4 +1,3 @@
-console.log("0")
 //import backend from "../../storage/backend.json" assert {type: "json"};
 const form = document.getElementById('locationForm');
 
@@ -9,7 +8,6 @@ console.log('SET YOUR API KEY FOR POSITIONSTAK HERE')
 
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // prevent form submission
-    console.log("1")
     const locationInput = document.querySelector('#locationInput').value;
 
     // Check if the location exists in backend.json
@@ -31,7 +29,6 @@ form.addEventListener('submit', function (event) {
         xhr.open('GET', 'https://api.positionstack.com/v1/forward?' + params.toString());
         xhr.onload = function () {
             if (xhr.status === 200) {
-                console.log("3")
                 const response = JSON.parse(xhr.responseText);
                 var location = response.data[0].label;
                 var offset = response.data[0].timezone_module.offset_sec / 3600;
