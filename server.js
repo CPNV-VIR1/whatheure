@@ -13,6 +13,7 @@ const requestListener = function (request, response) {
             } else {
                 response.setHeader('Content-Type', 'text/html');
                 response.end(data);
+
             }
         });
     } else if (request.url.startsWith('/assets/js/')) {

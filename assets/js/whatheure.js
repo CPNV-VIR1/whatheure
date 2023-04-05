@@ -1,22 +1,24 @@
-import backend from "../../storage/backend.json" assert {type: "json"};
+console.log("0")
+//import backend from "../../storage/backend.json" assert {type: "json"};
 const form = document.getElementById('locationForm');
 
 // Get the access key from the JSON data
-const access_key = process.env.WHATHEURE_POSSTACK_ACCESS_KEY
+const access_key = "API_KEY";
 
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // prevent form submission
+    console.log("1")
     const locationInput = document.querySelector('#locationInput').value;
 
     // Check if the location exists in backend.json
-    if (backend.hasOwnProperty(locationInput)) {
-        // Get the location and offset from backend.json
-        const location = backend[locationInput].location;
-        const offset = backend[locationInput].offset;
+   //if (backend.hasOwnProperty(locationInput)) {
+   //    // Get the location and offset from backend.json
+   //    const location = backend[locationInput].location;
+   //    const offset = backend[locationInput].offset;
 
-        fillTable(location, offset);
+   //    fillTable(location, offset);
 
-    } else {
+   //} else {
         const params = new URLSearchParams({
             access_key: access_key,
             query: locationInput,
@@ -27,15 +29,16 @@ form.addEventListener('submit', function (event) {
         xhr.open('GET', 'https://api.positionstack.com/v1/forward?' + params.toString());
         xhr.onload = function () {
             if (xhr.status === 200) {
+                console.log("3")
                 const response = JSON.parse(xhr.responseText);
                 var location = response.data[0].label;
                 var offset = response.data[0].timezone_module.offset_sec / 3600;
 
                 // Store the location in backend.json
-                backend[locationInput] = { location, offset };
-                const jsonString = JSON.stringify(backend, null, 2);
+                //backend[locationInput] = { location, offset };
+                //const jsonString = JSON.stringify(backend, null, 2);
 
-                fs.writeFileSync(backend, jsonString);
+                //fs.writeFileSync(backend, jsonString);
 
                 fillTable(location, offset);
 
@@ -44,11 +47,10 @@ form.addEventListener('submit', function (event) {
             }
         };
         xhr.send();
-    }
+// }
 });
 
 function fillTable(location, offset) {
-
     // Create a new row in the table for each location in the table body timezoneTableBody
     let tableBody = document.getElementById('timezoneTable');
     const newRow = tableBody.insertRow();
