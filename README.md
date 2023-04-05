@@ -1,10 +1,10 @@
 # RIA1 - Whatheure
 ### Thomas Grossmann & Benoît Pierrehumbert
 
-## Projet
-Whatheure est un site permettant de voir l'heure actuelle de n'importe quel lieu dans le monde.
+## Project
+Whatheure is an application that displays the current time of any place in the world.
 
-## Dépendences
+## Dependencies
 - Git 2.37.1
 - NodeJS v19.5.0
 - NPM @9.3.1
@@ -13,24 +13,24 @@ Whatheure est un site permettant de voir l'heure actuelle de n'importe quel lieu
   - supertest : ^6.3.3
 
 ## Installation
-Pour installer Whateur, clonez le repo et installez les dépendences NPM
+To install Whateure, clone the repo and install the NPM dependencies
 ```bash
 git clone https://github.com/CPNV-RIA1/whatheure
 cd whatheure
 npm install
 ```
 
-## Lancer l'application
+## Run the application
 ```bash
 node server.js
 ```
 
-## Lancer les tests en local
+## Run the tests locally
 ```bash
 npm run test tests/git.test.js
 ```
 
-## Structure du code
+## Structure
 ```bash
 ├── LICENSE
 ├── assets
