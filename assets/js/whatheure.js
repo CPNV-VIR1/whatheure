@@ -3,7 +3,9 @@ console.log("0")
 const form = document.getElementById('locationForm');
 
 // Get the access key from the JSON data
-const access_key = "API_KEY";
+console.log('SET YOUR API KEY FOR POSITIONSTAK HERE')
+//const access_key = "API_KEY";
+
 
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // prevent form submission
