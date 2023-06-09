@@ -22,7 +22,7 @@ npm install
 
 ## Run the application
 ```bash
-node serverExpress.js
+node server.js
 ```
 
 ## Run the tests locally
@@ -45,7 +45,7 @@ npm run test tests/git.test.js
 ├── node_modules
 ├── package-lock.json
 ├── package.json
-├── serverExpress.js
+├── server.js
 ├── storage
 │   ├── backend.json
 │   └── backend.json.example

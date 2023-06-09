@@ -2,8 +2,7 @@
 const form = document.getElementById('locationForm');
 
 // Get the access key from the JSON data
-console.log('SET YOUR API KEY FOR POSITIONSTAK HERE')
-//const accessKey = "API_KEY";
+const accessKey = "d";
 
 
 form.addEventListener('submit', function (event) {
