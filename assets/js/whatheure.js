@@ -8,16 +8,6 @@ const accessKey = "d";
 form.addEventListener('submit', function (event) {
     event.preventDefault(); // prevent form submission
     const locationInput = document.querySelector('#locationInput').value;
-
-    // Check if the location exists in backend.json
-    //if (backend.hasOwnProperty(locationInput)) {
-    //    // Get the location and offset from backend.json
-    //    const location = backend[locationInput].location;
-    //    const offset = backend[locationInput].offset;
-
-    //    fillTable(location, offset);
-
-    //} else {
     const params = new URLSearchParams({
         access_key: accessKey,
         query: locationInput,
@@ -31,12 +21,6 @@ form.addEventListener('submit', function (event) {
             const response = JSON.parse(xhr.responseText);
             var location = response.data[0].label;
             var offset = response.data[0].timezone_module.offset_sec / 3600;
-
-            // Store the location in backend.json
-            //backend[locationInput] = { location, offset };
-            //const jsonString = JSON.stringify(backend, null, 2);
-
-            //fs.writeFileSync(backend, jsonString);
 
             fillTable(location, offset);
 

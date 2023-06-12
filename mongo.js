@@ -31,7 +31,7 @@ const insertLocation = async (databaseName, location) => {
 const getTimeForLocation = async (databaseName, location) => {
     try {
         const db = client.db(databaseName);
-        const collection = db.collection('your-collection');
+        const collection = db.collection('timezone');
         const result = await collection.findOne({ location });
         console.log('Time data:', result.time);
         return result;
