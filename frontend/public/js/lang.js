@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     function translatePage(lang) {
-        var langFile = 'assets/json/' + lang + '.json'
+        var langFile = 'json/' + lang + '.json'
 
         fetch(langFile)
             .then(function (response) {
