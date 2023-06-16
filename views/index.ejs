@@ -57,12 +57,12 @@
                         <td id="timeText"></td>
                     </tr>
                     <tbody id="timezoneTable">
-                    <% locationData.forEach((data) => { %>
+                    <% locationData.forEach(function(data) { %>
                         <tr class="w-full">
                             <td><%= data.location %></td>
                             <td><%= data.time %></td>
                         </tr>
-                    <% }); %>
+                    <% }) %>
                     </tbody>
                     <tbody id="timezoneTable">
                     </tbody>

@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 
-const { connectToMongo, insertLocation, getTimeForLocation } = require('./mongo');
-
+const { connectToMongo, getTimes } = require('mongodb'); // Corrected import statement
 
 app.use('/assets', express.static('assets'));
 
@@ -12,12 +11,16 @@ app.get('/', (req, res) => {
     res.status(200);
     res.render('index');
 });
+
 app.get('/store', (req, res) => {
     res.send('This is the store function');
 });
+
 app.get('/get', async (req, res) => {
     try {
-        const locations = await getTimeForLocation(databaseName);
+        //const client = await connectToMongo();
+        const locations = await getTimes;
+        console.log(locations);
         res.status(200);
         res.render('index', { locationData: locations });
     } catch (error) {
@@ -26,6 +29,4 @@ app.get('/get', async (req, res) => {
     }
 });
 
-
-
- app.listen(8888);
+app.listen(8888);

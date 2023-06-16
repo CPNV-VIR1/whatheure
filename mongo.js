@@ -1,5 +1,3 @@
-// mongo.js
-
 const { MongoClient } = require('mongodb');
 
 const uri = 'mongodb://localhost:27017'; // Replace with your MongoDB connection URI
@@ -40,9 +38,21 @@ const getTimeForLocation = async (databaseName, location) => {
         throw error;
     }
 };
+const getTimes = async (client) => {
+    MongoClient.connect(uri, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("whatheure");
+        dbo.collection("timezone").find({}).toArray(function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            db.close();
+        });
+    });
+};
 
 module.exports = {
     connectToMongo,
     insertLocation,
     getTimeForLocation,
+    getTimes,
 };
