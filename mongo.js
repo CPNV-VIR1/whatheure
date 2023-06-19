@@ -1,6 +1,7 @@
 const { MongoClient } = require('mongodb');
 
-const uri = 'mongodb://localhost:27017'; // Replace with your MongoDB connection URI
+const uri = 'mongodb://localhost:27017/whatheure'
+//const uri = 'mongodb+srv://whatheure:'+process.env.MONGODB_PASSWORD+'@whatheure.ee01utl.mongodb.net/?retryWrites=true&w=majority"'; // Replace with your MongoDB connection URI
 const client = new MongoClient(uri, { useUnifiedTopology: true });
 
 const connectToMongo = async () => {
@@ -39,16 +40,18 @@ const getTimeForLocation = async (databaseName, location) => {
     }
 };
 const getTimes = async (client) => {
-    MongoClient.connect(uri, function (err, db) {
-        if (err) throw err;
-        var dbo = db.db("whatheure");
-        dbo.collection("timezone").find({}).toArray(function (err, result) {
-            if (err) throw err;
-            console.log(result);
-            db.close();
-        });
-    });
+    try {
+        const db = client.db("whatheure");
+        const collection = db.collection("timezone");
+        const result = await collection.find({}).toArray();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.error('Error retrieving documents:', error);
+        throw error;
+    }
 };
+
 
 module.exports = {
     connectToMongo,
