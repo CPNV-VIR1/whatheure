@@ -1,6 +1,6 @@
 const getLocations = async (req, res) => {
     const { location } = req.query
-    const accessKey = "c04cd1a26bc039a4d29b2c9dc734ee0b";
+    const accessKey = process.env.WHATHEURE_POSSTACK_ACCESS_KEY
     const params = new URLSearchParams({
         access_key: accessKey,
         query: location,
