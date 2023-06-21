@@ -1,23 +1,46 @@
+const https = require('https');
+
 const getLocations = async (req, res) => {
     const { location } = req.query;
     const accessKey = process.env.WHATHEURE_POSSTACK_ACCESS_KEY;
     const params = new URLSearchParams({
         access_key: accessKey,
         query: location,
-        timezone_module: 1
+        timezone_module: 1,
     });
 
     try {
-        const response = await fetch(`http://api.positionstack.com/v1/forward?${params.toString()}`);
-        const data = await response.json();
+        const options = {
+            hostname: 'api.positionstack.com',
+            path: `/v1/forward?${params.toString()}`,
+            method: 'GET',
+        };
 
-        const loc = data.data[0].label;
-        const offset = data.data[0].timezone_module.offset_sec / 3600;
+        const request = https.request(options, (response) => {
+            let data = '';
 
-        res.json({
-            location: loc,
-            offset: offset
+            response.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            response.on('end', () => {
+                const jsonData = JSON.parse(data);
+                const loc = jsonData.data[0].label;
+                const offset = jsonData.data[0].timezone_module.offset_sec / 3600;
+
+                res.json({
+                    location: loc,
+                    offset: offset,
+                });
+            });
         });
+
+        request.on('error', (error) => {
+            console.error(error);
+            res.status(500).json({ error: 'An error occurred' });
+        });
+
+        request.end();
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'An error occurred' });
@@ -25,5 +48,5 @@ const getLocations = async (req, res) => {
 };
 
 module.exports = {
-    getLocations
+    getLocations,
 };
