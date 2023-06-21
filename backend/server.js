@@ -1,4 +1,5 @@
 const express = require('express');
+const mariaDB = require('./mariadb.js');
 const path = require('path');
 const apiRouter = require('./routes/api');
 const cors = require('cors');
