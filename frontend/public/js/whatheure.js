@@ -1,15 +1,17 @@
-//import backend from "../../storage/backend.json" assert {type: "json"};
 const form = document.getElementById('locationForm');
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     const locationInput = document.querySelector('#locationInput').value;
 
-    fetch(`/api/locations?location=${locationInput}`)
+    fetch(`http://localhost:8888/api/locations?location=${locationInput}`)
         .then((response) => response.json())
         .then((data) => {
-            fillTable(data.location, data.offset)
+            fillTable(data.location, data.offset);
         })
+        .catch((error) => {
+            console.error(error);
+        });
 });
 
 function fillTable(location, offset) {
@@ -25,7 +27,7 @@ function fillTable(location, offset) {
         let tzDifference = offset * 60 + targetTime.getTimezoneOffset();
         let newDate = new Date(targetTime.getTime() + tzDifference * 60 * 1000);
         timeCell.innerHTML = newDate.toLocaleString();
-    }, 1000)
+    }, 1000);
 
     document.querySelector('#locationInput').value = '';
 }
