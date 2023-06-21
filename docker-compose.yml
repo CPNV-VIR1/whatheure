@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    build: ./backend
+    image: whatheure-backend
+    ports:
+      - "8888:8888"
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    image: whatheure-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
