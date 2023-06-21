@@ -3,7 +3,9 @@ require('dotenv').config();
 
 const app = express();
 
-const { connectToMongo, getTimes } = require('mongodb'); // Corrected import statement
+//const { connectToMongo, getTimes } = require('mongodb');
+const mariaDB = require('./mariadb.js');
+
 
 app.use('/assets', express.static('assets'));
 
@@ -21,7 +23,7 @@ app.get('/store', (req, res) => {
 app.get('/get', async (req, res) => {
     try {
         //const client = await connectToMongo();
-        const locations = await getTimes;
+        const locations = await mariaDB.getTimes();
         console.log(locations);
         res.status(200);
         res.render('index', { locationData: locations });
