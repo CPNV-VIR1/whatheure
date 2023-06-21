@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <title>Whatheure</title>
+
+</head>
+<div id="loader" style="display: none" class="absolute w-full h-full bg-red-500">
+</div>
+<header class="bg-indigo-600">
+    <div class="flex justify-end">
+        <button id="btnEn"
+            class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-300 bg-indigo-500">EN
+        </button>
+        <button id="btnFr"
+            class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-300 bg-indigo-500">FR
+        </button>
+        <button id="btnDe"
+            class="ml-2 rounded-md py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-300 bg-indigo-500">DE
+        </button>
+    </div>
+</header>
+<main>
+    <div class="mt-5 w-full">
+        <form id="locationForm" method="post">
+            <div class="space-y-6 px-4 py-5">
+                <div class="text-center">
+                    <p class="text-5xl"><a href="/">Whatheure</a></p>
+                    <p class="text-xl text-gray-500 italic" id="slogan" data-i18n="slogan"></p>
+                </div>
+                <label id="locationLabel" for="locationInput" class="text-xl font-medium text-gray-900"
+                    data-i18n="locationLabel"></label>
+                <div class="mt-2 rounded-md text-center">
+                    <input type="text" name="locationInput" id="locationInput"
+                        class="w-2/3 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-gray-300 placeholder:text-gray-400 placeholder:px-2"
+                        placeholder="Nyon Suisse">
+                    <button type="submit"
+                        class="ml-2 rounded-md bg-indigo-600 py-2 px-3 text-xl font-semibold text-white shadow-sm hover:bg-indigo-500"
+                        id="btnSearch" data-i18n="btnSearch"></button>
+                </div>
+            </div>
+        </form>
+        <div class="space-y-6 px-4 py-5 border-t-2">
+            <label id="timezonesLabel" for="timezones" class="text-xl font-medium text-gray-900"
+                data-i18n="timezonesLabel"></label>
+            <div class="mt-2 text-center">
+                <table class="w-full text-xl">
+                    <thead>
+                        <th data-i18n="location" id="locationHead">Location</th>
+                        <th data-i18n="time" id="timeHead">Time</th>
+                    </thead>
+                    <tr class="w-full">
+                        <td id="locationText"></td>
+                        <td id="timeText"></td>
+                    </tr>
+                    <tbody id="timezoneTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+</html>
