@@ -16,4 +16,16 @@ app.use('/api', apiRouter);
 app.set('view engine', 'html');
 app.set('views', '../frontend');
 
-app.listen(8888);
+app.get('/api/locations', async (req, res) => {
+    console.log('GET /api/locations')
+    try {
+        const locations = await mariaDB.getTimes(); // Appel à votre fonction pour récupérer les données de localisation depuis MariaDB
+        console.log(locations);
+        res.json({ locations }); // Renvoie les données de localisation au format JSON
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.listen(8080);

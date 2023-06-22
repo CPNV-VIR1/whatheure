@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   backend:
     container_name: backend
@@ -7,6 +6,8 @@ services:
     image: whatheure-backend
     ports:
       - "8888:8888"
+    env_file:
+      - ./backend/.env
   frontend:
     container_name: frontend
     build: ./frontend
@@ -15,5 +16,14 @@ services:
       - backend
     ports:
       - "80:5173"
-    env_file:
-      - ./frontend/.env
+  database:
+    container_name: database
+    image: mariadb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Pa$$w0rd
+      - MYSQL_DATABASE=whatheure
+      - MYSQL_USER=whatheure
+      - MYSQL_PASSWORD=Pa$$w0rd
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d

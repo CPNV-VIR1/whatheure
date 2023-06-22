@@ -4,7 +4,8 @@
   "description": "",
   "main": "positionstack.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "dotenv docker-compose up"
   },
   "keywords": [],
   "author": "",
