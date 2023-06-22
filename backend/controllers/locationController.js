@@ -24,14 +24,14 @@ const getLocations = async (req, res) => {
             });
 
             response.on('end', () => {
-                /*const jsonData = JSON.parse(data);
+                const jsonData = JSON.parse(data);
                 const loc = jsonData.data[0].label;
                 const offset = jsonData.data[0].timezone_module.offset_sec / 3600;
 
                 res.json({
                     location: loc,
                     offset: offset,
-                });*/
+                });
                 console.log('Data:', data);
             });
         });

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadLocations();
 });
 function loadLocations() {
-    fetch(url+'/api/locations')
+    fetch(url+'/api/timezone')
         .then(response => response.json())
         .then(data => {
             const locations = data.locations;

@@ -2,8 +2,8 @@ const mariadb = require('mariadb');
 
 const client = mariadb.createPool({
     host: 'localhost',
-    user: 'whatheure',
-    password: 'Pa$$w0rd',
+    user: 'root',
+    password: '',
     database: 'whatheure',
     connectionLimit: 5 // Adjust the connection limit as per your requirements
 });
@@ -19,7 +19,7 @@ const connectToMariaDB = async () => {
         throw error;
     } finally {
         if (connection) {
-            connection.end();
+            await connection.end();
         }
     }
 };
@@ -28,7 +28,7 @@ const insertLocation = async (databaseName, location) => {
     let connection;
     try {
         connection = await client.getConnection();
-        const query = 'INSERT INTO your_table (location) VALUES (?)';
+        const query = 'INSERT INTO locations (location) VALUES (?)';
         await connection.query(query, [location]);
         console.log('Location data stored.');
     } catch (error) {
@@ -45,7 +45,7 @@ const getTimeForLocation = async (databaseName, location) => {
     let connection;
     try {
         connection = await client.getConnection();
-        const query = 'SELECT time FROM timezones WHERE location = ?';
+        const query = 'SELECT time FROM locations WHERE location = ?';
         const results = await connection.query(query, [location]);
         console.log('Time data:', results[0].time);
         return results[0];
@@ -64,7 +64,7 @@ const getTimes = async () => {
     console.log('Getting time data')
     try {
         connection = await client.getConnection();
-        const query = 'SELECT * FROM timezones';
+        const query = 'SELECT * FROM locations';
         const results = await connection.query(query);
         return results;
     } catch (error) {

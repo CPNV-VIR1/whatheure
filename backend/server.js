@@ -16,7 +16,7 @@ app.use('/api', apiRouter);
 app.set('view engine', 'html');
 app.set('views', '../frontend');
 
-app.get('/api/locations', async (req, res) => {
+app.get('/api/timezone', async (req, res) => {
     console.log('GET /api/locations')
     try {
         const locations = await mariaDB.getTimes(); // Appel à votre fonction pour récupérer les données de localisation depuis MariaDB
