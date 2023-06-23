@@ -24,7 +24,7 @@ const connectToMariaDB = async () => {
     }
 };
 
-const insertLocation = async (databaseName, location) => {
+const insertLocation = async (location) => {
     let connection;
     try {
         connection = await client.getConnection();

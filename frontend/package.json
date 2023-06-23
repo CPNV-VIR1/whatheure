@@ -9,5 +9,8 @@
     },
     "dependencies": {
         "vite": "^4.3.9"
+    },
+    "devDependencies": {
+        "@esbuild/win32-x64": "^0.18.6"
     }
 }
