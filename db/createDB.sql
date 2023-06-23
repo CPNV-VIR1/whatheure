@@ -1,15 +1,15 @@
--- Supprimer la base de données si elle existe déjà
+-- Drop the database if it exists
 DROP DATABASE IF EXISTS whatheure;
 
--- Créer la base de données
+-- Create the database
 CREATE DATABASE whatheure;
 
--- Utiliser la base de données
+-- Use the database
 USE whatheure;
 
--- Créer la table "locations"
+-- Create the "locations" table
 CREATE TABLE locations (
-    ID INT PRIMARY KEY,
-    location VARCHAR(255),
-    offset INT
+                           ID INT AUTO_INCREMENT PRIMARY KEY,
+                           location VARCHAR(255),
+                           offset INT
 );

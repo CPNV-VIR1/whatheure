@@ -4,8 +4,8 @@ form.addEventListener('submit', function (event) {
     event.preventDefault();
     const locationInput = document.querySelector('#locationInput').value;
 
-    //fetch(`http://whatheure.cld.education/api/locations?location=${locationInput}`)
-    fetch(`http://localhost:8888/api/locations?location=${locationInput}`)
+    fetch(`http://whatheure.cld.education/api/locations?location=${locationInput}`)
+    //fetch(`http://localhost:8888/api/locations?location=${locationInput}`)
         .then((response) => response.json())
         .then((data) => {
             fillTable(data.location, data.offset);

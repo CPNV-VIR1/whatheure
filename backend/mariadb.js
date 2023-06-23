@@ -24,22 +24,23 @@ const connectToMariaDB = async () => {
     }
 };
 
-const insertLocation = async (location) => {
+const insertLocation = async (location, offset) => {
     let connection;
     try {
         connection = await client.getConnection();
-        const query = 'INSERT INTO locations (location) VALUES (?)';
-        await connection.query(query, [location]);
+        const query = 'INSERT INTO locations (location, offset) VALUES (?, ?)';
+        await connection.query(query, [location, offset]);
         console.log('Location data stored.');
     } catch (error) {
         console.error('Error inserting document:', error);
         throw error;
     } finally {
         if (connection) {
-            connection.end();
+            await connection.release();
         }
     }
 };
+
 
 const getTimeForLocation = async (databaseName, location) => {
     let connection;

@@ -1,5 +1,5 @@
 const https = require('https');
-
+const mariaDB = require('../mariadb.js');
 const getLocations = async (req, res) => {
     const { location } = req.query;
     const accessKey = process.env.WHATHEURE_POSSTACK_ACCESS_KEY;
@@ -27,7 +27,7 @@ const getLocations = async (req, res) => {
                 const jsonData = JSON.parse(data);
                 const loc = jsonData.data[0].label;
                 const offset = jsonData.data[0].timezone_module.offset_sec / 3600;
-
+                mariaDB.insertLocation(loc, offset)
                 res.json({
                     location: loc,
                     offset: offset,
