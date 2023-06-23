@@ -32,7 +32,7 @@ services:
 
   database:
     container_name: database
-    image: mariadb
+    image: mariadb:latest
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=Pa$$w0rd
@@ -41,6 +41,11 @@ services:
       - MYSQL_PASSWORD=Pa$$w0rd
     volumes:
       - ./db:/docker-entrypoint-initdb.d
+      - db-data:/var/lib/mysql
+      - db-config:/etc/mysql/conf.d
+    ports:
+      - 3306:3306
+
 
 volumes:
   db-data:
