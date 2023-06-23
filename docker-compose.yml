@@ -8,6 +8,7 @@ services:
       - "8888:8888"
     env_file:
       - ./backend/.env
+
   frontend:
     container_name: frontend
     build: ./frontend
@@ -15,7 +16,20 @@ services:
     depends_on:
       - backend
     ports:
+      - "5173:5173"
+
+  proxy:
+    container_name: nginx
+    image: nginx
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
       - "80:5173"
+
   database:
     container_name: database
     image: mariadb
@@ -27,3 +41,8 @@ services:
       - MYSQL_PASSWORD=Pa$$w0rd
     volumes:
       - ./db:/docker-entrypoint-initdb.d
+
+volumes:
+  db-data:
+  db-config:
+

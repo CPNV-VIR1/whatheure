@@ -1,5 +1,5 @@
 const express = require('express');
-const mariaDB = require('./mariadb.js');
+//const mariaDB = require('./mariadb.js');
 const path = require('path');
 const apiRouter = require('./routes/api');
 const cors = require('cors');
@@ -27,5 +27,6 @@ app.get('/api/timezone', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
 
 app.listen(8888);

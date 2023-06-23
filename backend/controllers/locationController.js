@@ -33,6 +33,7 @@ const getLocations = async (req, res) => {
                     offset: offset,
                 });
                 console.log('Data:', data);
+
             });
         });
 
@@ -51,3 +52,4 @@ const getLocations = async (req, res) => {
 module.exports = {
     getLocations,
 };
+
