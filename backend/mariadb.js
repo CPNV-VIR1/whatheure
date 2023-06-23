@@ -1,7 +1,7 @@
 const mariadb = require('mariadb');
 
 const client = mariadb.createPool({
-    host: 'localhost',
+    host: 'http://whatheure.cld.education/',
     user: 'root',
     password: '',
     database: 'whatheure',
